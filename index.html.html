@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa Hàng Thời Trang FashionShop</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; }
+        header { background-color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 24px; font-weight: bold; color: #e67e22; text-transform: uppercase; cursor: pointer; }
+        nav a { text-decoration: none; color: #333; margin-left: 20px; font-weight: 500; cursor: pointer; }
+        nav a:hover { color: #e67e22; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://unsplash.com') no-repeat center center/cover; height: 220px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+        .hero h1 { font-size: 32px; margin-bottom: 5px; }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 25px; font-size: 26px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .product-img { width: 100%; height: 280px; object-fit: cover; }
+        .product-info { padding: 15px; text-align: center; }
+        .product-name { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .product-price { color: #e74c3c; font-weight: bold; font-size: 18px; margin-bottom: 12px; }
+        .btn-add { background-color: #2c3e50; color: white; border: none; padding: 10px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: 600; }
+        .btn-add:hover { background-color: #e67e22; }
+        #cart-page { display: none; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .cart-item-info { display: flex; align-items: center; gap: 15px; }
+        .cart-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+        .cart-total { text-align: right; font-size: 20px; font-weight: bold; margin-top: 20px; color: #e74c3c; }
+        .checkout-form { margin-top: 30px; border-top: 2px dashed #ccc; padding-top: 20px; max-width: 500px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .btn-submit { background-color: #27ae60; color: white; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px; }
+        .btn-submit:hover { background-color: #219653; }
+        .btn-back { background: none; border: none; color: #e67e22; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="showPage('home')">FashionShop</div>
+        <nav>
+            <a onclick="showPage('home')">Trang Chủ</a>
+            <a onclick="showPage('cart')" id="cart-status" style="color: #e67e22; font-weight: bold;">Giỏ Hàng (0)</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>XU HƯỚNG THỜI TRANG 2026</h1>
+        <p>Giao diện đẹp mắt, tích hợp giỏ hàng tự động tính tiền</p>
+    </section>
+
+    <div class="container">
+        <!-- TRANG CHỦ -->
+        <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                <!-- Thêm dòng này ở ngay đầu file index.html (nếu chưa có) -->
+{% load static %}    
+      <img src="images/ao1.jpg" class="product-img" alt="Áo thun">
+                 <div class="product">
+    
+
+    <h3>Áo Thun Oversize</h3>
+
+    <p class="price">250.000 đ</p>
+
+    <button>Thêm vào giỏ</button>
+</div>   
+                   
+
+    <div class="product-name">Áo Thun Cotton White</div>
+                
+                   <div class="product-name">Áo Thun Cotton White</div>
+                        <div class="product-price">250.000đ</div>
+                        <button class="btn-add" onclick="addToCart('Áo Thun Cotton White', 250000, 'https://unsplash.com')">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                <img src="images/ao2.jpg" class="product-img">
+
+                    <div class="product-info">
+                        <div class="product-name">Áo Sơ Mi Oxford</div>
+                        <div class="product-price">380.000đ</div>
+                        <button class="btn-add" onclick="addToCart('Áo Sơ Mi Oxford', 380000, 'http://unsplash.com')">Thêm vào giỏ</button>
+                    </div>
+                </div> 
+            
+<div class="product-card">
+   <img src="images/ao3.jpg" class="product-img">
+
+    <div class="product-info">
+        <div class="product-name">Áo Khoác Jacket Da Biker</div>
+        <div class="product-price">850.000đ</div>
+       <button class="btn-add" onclick="addToCart('Áo Khoác Jacket Da Biker', 850000, 'ảnh thời trang nam/ao3.png')">Thêm vào giỏ</button>
+</div>
+                <div class="product-card">
+                    
+                    <div class="product-info">
+                       <img src="images/ao4.jpg" class="product-img">
+ 
+                        <div class="product-price">450.000đ</div>
+                        <button class="btn-add" onclick="addToCart('Quần Jeans Slim-fit', 450000, 'ảnh thời trang nam/ao4.png')">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+s
+        <!-- TRANG GIỎ HÀNG -->
+        <div id="cart-page" style="display: none; padding: 20px; max-width: 600px; margin: 0 auto;">
+    <h2>Giỏ Hàng Của Bạn</h2>
+    
+    <!-- KHU VỰC MỚI THÊM: Nơi hiển thị danh sách sản phẩm đã đặt -->
+    <div id="cart-items" style="margin-bottom: 20px;"></div>
+
+    <div class="checkout-form">
+        <form id="orderForm" onsubmit="checkout(event)">
+            <!-- Các ô input nhập địa chỉ của bạn giữ nguyên -->
+            <input type="text" id="address" required placeholder="Số nhà, tên đường, quận/huyện">
+            <button type="submit" class="btn-submit">Xác Nhận Đặt Hàng (COD)</button>
+        </form>
+    </div>
+</div>
+            <button class="btn-back" onclick="showPage('home')">← Tiếp tục mua sắm</button>
+            <h2 style="margin-bottom: 25px;">Giỏ Hàng Của Bạn</h2>
+            <div id="cart-items-list"></div>
+            <div class="cart-total" id="cart-total-price">Tổng tiền: 0đ</div>
+
+            <div class="checkout-form">
+                <h3>Thông Tin Giao Hàng</h3>
+                <form id="orderForm" onsubmit="checkout(event)">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" id="fullname" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" id="phone" required placeholder="0901234567">
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ nhận hàng *</label>
+                        <input type="text" id="address" required placeholder="Số nhà, tên đường, quận/huyện">
+                    </div>
+                    <button type="submit" class="btn-submit">Xác Nhận Đặt Hàng (COD)</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        function showPage(page) {
+            if (page === 'home') {
+                document.getElementById('home-page').style.display = 'block';
+                document.getElementById('cart-page').style.display = 'none';
+            } else {
+                document.getElementById('home-page').style.display = 'none';
+                document.getElementById('cart-page').style.display = 'block';
+                renderCart();
+            }
+        }
+        function addToCart(name, price, img) {
+            let item = cart.find(i => i.name === name);
+            if (item) { item.quantity += 1; } 
+            else { cart.push({ name, price, img, quantity: 1 }); }
+            updateCartStatus();
+            alert(`Đã thêm "${name}" vào giỏ hàng!`);
+        }
+        function updateCartStatus() {
+            let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-status').innerText = `Giỏ Hàng (${totalItems})`;
+        }
+        function renderCart() {
+            let listContainer = document.getElementById('cart-items-list');
+            let totalContainer = document.getElementById('cart-total-price');
+            listContainer.innerHTML = '';
+            if (cart.length === 0) {
+                listContainer.innerHTML = '<p style="color: #666; padding: 15px 0;">Giỏ hàng trống.</p>';
+                totalContainer.innerText = 'Tổng tiền: 0đ';
+                return;
+            }
+            let totalMoney = 0;
+            cart.forEach(item => {
+                totalMoney += item.price * item.quantity;
+                listContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <img src="${item.img}" class="cart-item-img">
+                            <div>
+                                <strong>${item.name}</strong><br>
+                                <span style="color:#e74c3c;">${item.price.toLocaleString('vi-VN')}đ</span>
+                            </div>
+                        </div>
+                        <div>Số lượng: <strong>${item.quantity}</strong></div>
+                    </div> `;
+            });
+            totalContainer.innerText = `Tổng tiền: ${totalMoney.toLocaleString('vi-VN')}đ`;
+        }
+        function checkout(event) {}
+            event.preventDefault();
+            if (cart.length === 0) { alert('Giỏ hàng trống!'); return; }
+            let name = document.getElementById('fullname').value;
+            let phone = document.getElementById('phone').value;
+            let address = document.getElementById('address').value;
+            <!-- Khung chứa tính năng đặt hàng -->
+  <!-- 1. Đóng hẳn đoạn code JavaScript trước khi viết HTML -->
+    <script>
+        let phone = document.getElementById('phone').value;
+        let address = document.getElementById('address').value;
+    </script> <!-- BẮT BUỘC PHẢI CÓ THẺ ĐÓNG NÀY -->
+
+
+    <!-- 2. Khung chứa tính năng đặt hàng (Nằm HOÀN TOÀN NGOÀI thẻ script) -->
+    <div class="order-container">
+        
+        <!-- Bộ chọn kích cỡ (Size) cho quần áo -->
+        <div class="size-group">
+            <label class="size-item">
+                <input type="radio" name="product_size" value="S" checked>
+                <span>S</span>
+            </label>
+            <label class="size-item">
+                <input type="radio" name="product_size" value="M">
+                <span>M</span>
+            </label>
+            <label class="size-item">
+                <input type="radio" name="product_size" value="L">
+                <span>L</span>
+            </label>
+        </div>
+
+        <!-- THÊM THẺ NÀY VÀO THÌ NÚT MỚI HIỆN -->
+        <button type="submit" class="btn-order-now">
+            THÊM VÀO GIỎ
+        </button>
+        
+    </div>
+<script>
+    // Biến lưu trữ số lượng sản phẩm trong giỏ
+    let cartCount = 0;
+
+    function addToCart() {
+        // Tăng số lượng lên 1
+        cartCount++;
+        
+        // Tìm đến thẻ Giỏ hàng trên menu để cập nhật text hiển thị
+        // Bạn cần đảm bảo thẻ giỏ hàng ở trên header có id hoặc class dễ nhận biết
+        const cartLink = document.querySelector('.nav-links a:last-child');
+        if (cartLink) {
+            cartLink.textContent = `Giỏ Hàng (${cartCount})`;
+        }
+        
+        // Hiển thị thông báo nhỏ cho người dùng
+        alert('Đã thêm sản phẩm vào giỏ hàng!');
+    }
+</script>
+
+
+
+
+
